@@ -9,10 +9,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function HomePage() {
   const categories = [
-    { name: "Dairy", icon: "🥛" },
-    { name: "Bakery", icon: "🥐" },
-    { name: "Beverages", icon: "🧃" },
-    { name: "Snacks", icon: "🍪" },
+    { name: "General Grocery", icon: "🛒" },
+    { name: "Sweets", icon: "🍬" },
+    { name: "Dry Fruits", icon: "🥜" },
+    { name: "Food", icon: "🍲" },
+    { name: "Vape", icon: "💨" },
+    { name: "Lottery", icon: "🎟️" },
+    { name: "Smoke", icon: "🚬" },
   ]
 
   const testimonials = [
@@ -108,7 +111,10 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-stagger">
           {categories.map((cat) => (
-            <Link key={cat.name} href={`/products?category=${cat.name.toLowerCase()}`}>
+            <Link 
+              key={cat.name} 
+              href={`/products?category=${cat.name.toLowerCase().replace(/\s+/g, '-')}`}
+            >
               <div className="bg-white border border-[#e8dbc2] rounded-xl p-8 text-center hover:shadow-[0_0_12px_rgba(170,120,70,0.25)] transition-all cursor-pointer transform hover:-translate-y-2 duration-300 group">
                 <div className="text-5xl mb-4 inline-block group-hover:scale-125 transition-transform duration-300">
                   {cat.icon}
@@ -192,7 +198,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ✅ UPDATED TOUR SECTION WITH CAROUSEL */}
+      {/* ✅ TOUR SECTION WITH CAROUSEL */}
       <section className="bg-[#f2e8d5] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 animate-fade-in-up">

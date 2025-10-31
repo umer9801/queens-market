@@ -60,7 +60,7 @@ export default function Footer() {
 
               {/* Address */}
               <a
-                href="https://maps.app.goo.gl/pNi8oZdQ5q55ybZQ9"
+                href="https://maps.app.goo.gl/cUnB9Memq5z7aURo8?g_st=aw"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-2 text-white/80 hover:text-white transition-colors underline-offset-4 hover:underline"

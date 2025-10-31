@@ -225,7 +225,7 @@ export default function ContactPage() {
 
               {/* Map Clickable */}
               <a
-                href="https://maps.app.goo.gl/pNi8oZdQ5q55ybZQ9"
+                href="https://maps.app.goo.gl/cUnB9Memq5z7aURo8?g_st=aw"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative h-80 rounded-lg overflow-hidden shadow-lg bg-muted"
@@ -245,7 +245,11 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div>
                     <p className="text-sm font-semibold text-muted-foreground uppercase">Address</p>
-                    <p className="text-foreground text-lg">91 Queen St S, Kitchener, ON N2G 1V9, Canada</p>
+                    <p className="text-foreground text-lg">
+                      <a href="https://maps.app.goo.gl/cUnB9Memq5z7aURo8?g_st=aw" target="_blank" rel="noopener noreferrer" className="underline hover:text-accent">
+                        91 Queen St S, Kitchener, ON N2G 1V9, Canada
+                      </a>
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-muted-foreground uppercase">Hours</p>
