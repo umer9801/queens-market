@@ -10,11 +10,11 @@ export default function ProductsPage() {
   const [sortBy, setSortBy] = useState<"name" | "price-low" | "price-high">("name")
 
   const products = [
-    // Dairy
+    // FOOD (Dairy / Bakery)
     {
       id: 1,
       name: "Organic Milk",
-      category: "Dairy",
+      category: "Food",
       price: 3.99,
       image: "/organic-milk-bottle.jpg",
       description: "Fresh organic whole milk sourced from local farms.",
@@ -22,7 +22,7 @@ export default function ProductsPage() {
     {
       id: 2,
       name: "Greek Yogurt",
-      category: "Dairy",
+      category: "Food",
       price: 5.99,
       image: "/greek-yogurt-container.png",
       description: "Rich, creamy texture—perfect for breakfast and smoothies.",
@@ -30,7 +30,7 @@ export default function ProductsPage() {
     {
       id: 3,
       name: "Cheddar Cheese",
-      category: "Dairy",
+      category: "Food",
       price: 4.49,
       image: "/cheddar-cheese-block.png",
       description: "Sharp cheddar cheese aged to perfection.",
@@ -38,17 +38,15 @@ export default function ProductsPage() {
     {
       id: 4,
       name: "Fresh Butter",
-      category: "Dairy",
+      category: "Food",
       price: 4.99,
       image: "/butter-stick.png",
       description: "Quality butter ideal for baking and cooking.",
     },
-
-    // Bakery
     {
       id: 5,
       name: "Sourdough Bread",
-      category: "Bakery",
+      category: "Food",
       price: 4.99,
       image: "/sourdough-loaf.png",
       description: "Naturally fermented sourdough loaf.",
@@ -56,7 +54,7 @@ export default function ProductsPage() {
     {
       id: 6,
       name: "Croissants",
-      category: "Bakery",
+      category: "Food",
       price: 3.49,
       image: "/croissants-pastry.jpg",
       description: "Soft buttery croissants, perfect for breakfast.",
@@ -64,7 +62,7 @@ export default function ProductsPage() {
     {
       id: 7,
       name: "Whole Wheat Bread",
-      category: "Bakery",
+      category: "Food",
       price: 3.99,
       image: "/whole-wheat-bread.png",
       description: "Healthy whole wheat loaf made fresh daily.",
@@ -72,17 +70,17 @@ export default function ProductsPage() {
     {
       id: 8,
       name: "Blueberry Muffins",
-      category: "Bakery",
+      category: "Sweets",
       price: 5.49,
       image: "/blueberry-muffins.png",
       description: "Moist muffins packed with fresh blueberries.",
     },
 
-    // Beverages
+    // GENERAL GROCERY (Drinks)
     {
       id: 9,
       name: "Fresh Orange Juice",
-      category: "Beverages",
+      category: "General Grocery",
       price: 4.99,
       image: "/orange-juice-bottle.jpg",
       description: "100% cold-pressed orange juice.",
@@ -90,7 +88,7 @@ export default function ProductsPage() {
     {
       id: 10,
       name: "Green Tea",
-      category: "Beverages",
+      category: "General Grocery",
       price: 3.49,
       image: "/green-tea-box.png",
       description: "Organic detoxifying green tea.",
@@ -98,7 +96,7 @@ export default function ProductsPage() {
     {
       id: 11,
       name: "Iced Coffee",
-      category: "Beverages",
+      category: "General Grocery",
       price: 5.99,
       image: "/iced-coffee-bottle.jpg",
       description: "Craft iced coffee brew with bold flavor.",
@@ -106,48 +104,88 @@ export default function ProductsPage() {
     {
       id: 12,
       name: "Sparkling Water",
-      category: "Beverages",
+      category: "General Grocery",
       price: 2.99,
       image: "/sparkling-water-bottle.png",
       description: "Refreshing carbonated hydration.",
     },
 
-    // Snacks
+    // DRY FRUITS
     {
       id: 13,
       name: "Almond Granola",
-      category: "Snacks",
+      category: "Dry Fruits",
       price: 6.99,
       image: "/granola-cereal.png",
       description: "Crunchy, healthy almond granola.",
     },
     {
+      id: 15,
+      name: "Mixed Nuts",
+      category: "Dry Fruits",
+      price: 7.99,
+      image: "/mixed-nuts-assortment.jpg",
+      description: "Nutritious blend of assorted nuts.",
+    },
+
+    // SWEETS
+    {
       id: 14,
       name: "Dark Chocolate Chips",
-      category: "Snacks",
+      category: "Sweets",
       price: 3.99,
       image: "/dark-chocolate-chips.jpg",
       description: "Premium dark chocolate chips for baking.",
     },
     {
-      id: 15,
-      name: "Mixed Nuts",
-      category: "Snacks",
-      price: 7.99,
-      image: "/mixed-nuts-assortment.jpg",
-      description: "Nutritious blend of assorted nuts.",
-    },
-    {
       id: 16,
       name: "Honey Crackers",
-      category: "Snacks",
+      category: "Sweets",
       price: 2.99,
       image: "/honey-crackers-box.jpg",
       description: "Lightly sweet honey-infused crackers.",
     },
+
+    // Vape
+    {
+      id: 17,
+      name: "Mint Vape Pod",
+      category: "Vape",
+      price: 12.99,
+      image: "/vape-mint.png",
+      description: "Smooth mint flavor vape pod.",
+    },
+
+    // Smoke
+    {
+      id: 18,
+      name: "Cigarette Pack",
+      category: "Smoke",
+      price: 9.99,
+      image: "/cigarette-pack.png",
+      description: "Premium filtered cigarettes pack.",
+    },
+
+    // Lottery
+    {
+      id: 19,
+      name: "Lottery Ticket",
+      category: "Lottery",
+      price: 1.99,
+      image: "/lottery-ticket.png",
+      description: "Try your luck and win big!",
+    },
   ]
 
-  const categories = ["Dairy", "Bakery", "Beverages", "Snacks"]
+  const categories = [
+    "General Grocery",
+    "Sweets",
+    "Dry Fruits",
+    "Food",
+    "Vape",
+    "Lottery",
+    "Smoke",
+  ]
 
   const filteredAndSorted = useMemo(() => {
     const filtered = selectedCategory ? products.filter((p) => p.category === selectedCategory) : products
@@ -163,7 +201,7 @@ export default function ProductsPage() {
   return (
     <main className="min-h-screen">
 
-      {/* ✅ New Hero Section With Image */}
+      {/* ✅ HERO IMAGE */}
       <section className="relative w-full h-[340px] md:h-[420px] overflow-hidden">
         <Image
           src="/bakery-fresh-bread-display.jpg"
@@ -181,11 +219,12 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Filters & Sorting */}
+      {/* FILTERS */}
       <section className="bg-muted border-b border-border animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
-            {/* Category Filter */}
+
+            {/* ✅ CATEGORY FILTER */}
             <div className="flex flex-col gap-3 w-full lg:w-auto">
               <div className="flex items-center gap-2">
                 <Filter size={20} className="text-primary" />
@@ -212,7 +251,7 @@ export default function ProductsPage() {
               </div>
             </div>
 
-            {/* Sorting */}
+            {/* SORTING */}
             <div className="flex flex-col gap-2 w-full lg:w-auto">
               <label className="font-semibold text-foreground">Sort By:</label>
               <select
@@ -225,11 +264,12 @@ export default function ProductsPage() {
                 <option value="price-high">Price (High to Low)</option>
               </select>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Products Grid */}
+      {/* ✅ PRODUCTS GRID (unchanged) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {filteredAndSorted.length === 0 ? (
           <div className="text-center py-12 animate-fade-in-up">
@@ -242,7 +282,6 @@ export default function ProductsPage() {
                 key={product.id}
                 className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-xl hover:border-accent transition-all duration-300 transform hover:-translate-y-2 group"
               >
-                {/* Product Image */}
                 <div className="relative h-48 overflow-hidden bg-muted">
                   <Image
                     src={product.image || "/placeholder.svg"}
@@ -251,8 +290,6 @@ export default function ProductsPage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
-
-                {/* Product Info */}
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-foreground group-hover:text-accent transition-colors">
                     {product.name}
@@ -267,7 +304,6 @@ export default function ProductsPage() {
           </div>
         )}
 
-        {/* Results Count */}
         <div className="text-center mt-12 text-muted-foreground animate-fade-in-up">
           <p>
             Showing {filteredAndSorted.length} of {products.length} products

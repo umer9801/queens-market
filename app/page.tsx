@@ -1,7 +1,11 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Star } from "lucide-react"
+import { useState, useEffect } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function HomePage() {
   const categories = [
@@ -29,8 +33,38 @@ export default function HomePage() {
     },
   ]
 
+  // ✅ Add your own pictures here (inside public/tour/)
+  const tourImages = [
+    "/mainhero.jpeg",
+    "/bakery.jpeg",
+    "/grocery.jpeg",
+    "/store-interior-shelves-products.jpg",
+    "/blueberry-muffins.png",
+    "/granola-cereal.png",
+  ]
+
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Auto-slide logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % tourImages.length)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [tourImages.length])
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + tourImages.length) % tourImages.length)
+  }
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % tourImages.length)
+  }
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#f6ecd9] to-[#e8dbc2]">
+
       {/* ✅ HERO SECTION */}
       <section className="relative h-[500px] overflow-hidden">
         <Image
@@ -158,7 +192,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ✅ TOUR SECTION */}
+      {/* ✅ UPDATED TOUR SECTION WITH CAROUSEL */}
       <section className="bg-[#f2e8d5] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 animate-fade-in-up">
@@ -170,25 +204,37 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-stagger">
-            <div className="bg-white rounded-lg overflow-hidden aspect-video hover:shadow-[0_0_15px_rgba(170,120,70,0.25)] transition-all duration-300 transform hover:scale-105">
-              <Image
-                src="/store-interior-shelves-products.jpg"
-                alt="Store Tour"
-                width={600}
-                height={400}
-                className="w-full h-full object-cover"
-              />
+          <div className="relative max-w-3xl mx-auto overflow-hidden rounded-xl shadow-lg">
+            <div
+              className="flex transition-transform duration-500"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {tourImages.map((img, idx) => (
+                <div key={idx} className="min-w-full h-[350px] relative">
+                  <Image
+                    src={img}
+                    alt={`Tour ${idx}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
             </div>
-            <div className="bg-white rounded-lg overflow-hidden aspect-video hover:shadow-[0_0_15px_rgba(170,120,70,0.25)] transition-all duration-300 transform hover:scale-105">
-              <Image
-                src="/bakery-fresh-bread-display.jpg"
-                alt="Bakery Section"
-                width={600}
-                height={400}
-                className="w-full h-full object-cover"
-              />
-            </div>
+
+            {/* Buttons */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60"
+            >
+              <ChevronLeft />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60"
+            >
+              <ChevronRight />
+            </button>
           </div>
         </div>
       </section>

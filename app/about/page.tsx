@@ -4,6 +4,62 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Heart, Users, Leaf, Sparkles, Globe, ShieldCheck, Clock, PackageCheck } from "lucide-react"
+import useEmblaCarousel from "embla-carousel-react"
+import { useEffect, useCallback } from "react"
+
+// ✅ Carousel Component
+function EmblaCarousel() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
+
+  useEffect(() => {
+    const interval = setInterval(scrollNext, 3500)
+    return () => clearInterval(interval)
+  }, [scrollNext])
+
+  return (
+    <div className="embla bg-neutral-800 relative rounded-xl overflow-hidden shadow-lg">
+      <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__container flex">
+
+          {/* Slide 1 */}
+          <div className="embla__slide flex-[0_0_100%] relative h-80 md:h-96">
+            <Image
+              src="/cofee.jpeg"
+              alt="Market Carousel Image"
+              fill
+              className="object-cover opacity-80"
+            />
+          </div>
+
+          {/* Slide 2 */}
+          <div className="embla__slide flex-[0_0_100%] relative h-80 md:h-96">
+            <Image
+              src="/oil.jpeg"
+              alt="Market Carousel Image"
+              fill
+              className="object-cover opacity-80"
+            />
+          </div>
+
+          {/* Slide 3 */}
+          <div className="embla__slide flex-[0_0_100%] relative h-80 md:h-96">
+            <Image
+              src="/products.jpeg"
+              alt="Market Carousel Image"
+              fill
+              className="object-cover opacity-80"
+            />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function AboutPage() {
   const highlights = [
@@ -101,6 +157,11 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* ✅ New Carousel Section */}
+      <section className="relative w-full max-w-6xl mx-auto px-4 py-16">
+        <EmblaCarousel />
       </section>
 
       {/* Highlights */}
