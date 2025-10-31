@@ -21,7 +21,7 @@ function EmblaCarousel() {
   }, [scrollNext])
 
   return (
-    <div className="embla bg-neutral-800 relative rounded-xl overflow-hidden shadow-lg">
+    <div className="embla relative rounded-xl overflow-hidden shadow-2xl ring-4 ring-yellow-400/30 animate-fade-in-up">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container flex">
 
@@ -31,7 +31,7 @@ function EmblaCarousel() {
               src="/cofee.jpeg"
               alt="Market Carousel Image"
               fill
-              className="object-cover opacity-80"
+              className="object-cover brightness-90 hover:scale-105 transition-transform duration-500"
             />
           </div>
 
@@ -41,7 +41,7 @@ function EmblaCarousel() {
               src="/oil.jpeg"
               alt="Market Carousel Image"
               fill
-              className="object-cover opacity-80"
+              className="object-cover brightness-90 hover:scale-105 transition-transform duration-500"
             />
           </div>
 
@@ -51,7 +51,7 @@ function EmblaCarousel() {
               src="/products.jpeg"
               alt="Market Carousel Image"
               fill
-              className="object-cover opacity-80"
+              className="object-cover brightness-90 hover:scale-105 transition-transform duration-500"
             />
           </div>
 
@@ -137,10 +137,10 @@ export default function AboutPage() {
   ]
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-gradient-to-b from-yellow-50 via-orange-50 to-yellow-100 animate-fade-in-up">
 
       {/* Hero */}
-      <section className="relative h-80 md:h-96 overflow-hidden bg-neutral-900">
+      <section className="relative h-80 md:h-96 overflow-hidden bg-gradient-to-r from-yellow-400/30 via-orange-300/20 to-yellow-200/20 animate-fade-in-up">
         <Image
           src="/store-interior-shelves-products.jpg"
           alt="Queens Market Store"
@@ -149,17 +149,17 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center">
           <div className="text-center text-white px-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-[#e6d2a8] to-[#b69b75] text-transparent bg-clip-text drop-shadow-[0_0_10px_rgba(182,155,117,0.7)]">
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-lg animate-fade-in-up">
               About Our Market
             </h1>
-            <p className="text-lg md:text-xl text-white/90">
+            <p className="text-lg md:text-xl text-white/90 animate-fade-in-up delay-150">
               Your Community's Global Marketplace
             </p>
           </div>
         </div>
       </section>
 
-      {/* ✅ New Carousel Section */}
+      {/* Carousel */}
       <section className="relative w-full max-w-6xl mx-auto px-4 py-16">
         <EmblaCarousel />
       </section>
@@ -172,17 +172,13 @@ export default function AboutPage() {
             return (
               <div
                 key={idx}
-                className="bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20 rounded-lg p-8 text-center hover:shadow-lg transition-shadow"
+                className="bg-gradient-to-br from-yellow-100 via-orange-50 to-yellow-50 border border-yellow-200 rounded-xl p-8 text-center shadow-md hover:shadow-2xl hover:ring-2 hover:ring-yellow-400 transition-all duration-300 cursor-pointer animate-fade-in-up delay-[200ms]"
               >
-                <div className="flex justify-center mb-4">
-                  <Icon size={42} className="text-accent" />
+                <div className="flex justify-center mb-4 glow-yellow">
+                  <Icon size={42} className="text-yellow-500" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  {highlight.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {highlight.description}
-                </p>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">{highlight.title}</h3>
+                <p className="text-gray-600">{highlight.description}</p>
               </div>
             )
           })}
@@ -190,30 +186,30 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section className="max-w-7xl mx-auto px-4 py-16 bg-gradient-to-r from-yellow-50 via-orange-50 to-yellow-50 animate-fade-in-up">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#e3cda1] to-[#aa8b63] text-transparent bg-clip-text drop-shadow-[0_0_8px_rgba(160,135,102,0.7)]">
+            <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-md animate-fade-in-up">
               Our Story
             </h2>
 
-            <p className="text-muted-foreground text-lg mb-4">
+            <p className="text-gray-700 text-lg mb-4 animate-fade-in-up delay-100">
               Queens Convenient Market is a vibrant community hub that celebrates diversity and quality. For 2 years,
               we've served families, students, and seniors with a curated mix of Sudanese, Canadian, and African products.
             </p>
 
-            <p className="text-muted-foreground text-lg mb-4">
+            <p className="text-gray-700 text-lg mb-4 animate-fade-in-up delay-150">
               We believe in ethical sourcing, sustainability, and authenticity. That’s why our shelves carry organic honey,
               premium nuts, spices, grains, and seasonal specialties.
             </p>
 
-            <p className="text-muted-foreground text-lg">
+            <p className="text-gray-700 text-lg animate-fade-in-up delay-200">
               Our weekends are special—dominoes, cards, culture, and friendships. We’re more than a market; we’re a heartbeat
               of community life.
             </p>
           </div>
 
-          <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
+          <div className="relative h-96 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 animate-fade-in-up delay-200">
             <Image
               src="/small-family-grocery-store-fresh-products.jpg"
               alt="Our Market Story"
@@ -225,13 +221,13 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-muted py-16">
+      <section className="py-16 bg-gradient-to-r from-yellow-50 via-orange-50 to-yellow-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-extrabold bg-gradient-to-r from-[#e3cda1] to-[#aa8b63] text-transparent bg-clip-text drop-shadow-[0_0_8px_rgba(160,135,102,0.7)]">
+            <h2 className="text-4xl font-extrabold bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-md animate-fade-in-up">
               Our Values
             </h2>
-            <p className="text-muted-foreground text-lg mt-2">
+            <p className="text-gray-700 text-lg mt-2 animate-fade-in-up delay-100">
               We grow by earning trust—not just making sales.
             </p>
           </div>
@@ -240,10 +236,10 @@ export default function AboutPage() {
             {values.map((value, idx) => {
               const Icon = value.icon
               return (
-                <div key={idx} className="bg-card border rounded-lg p-8 text-center">
-                  <Icon size={48} className="text-primary mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-3 text-foreground">{value.title}</h3>
-                  <p className="text-muted-foreground text-base">{value.description}</p>
+                <div key={idx} className="bg-white border rounded-xl p-8 text-center shadow-md hover:shadow-2xl transition-shadow duration-300 cursor-pointer animate-fade-in-up delay-[200ms]">
+                  <Icon size={48} className="text-yellow-500 mx-auto mb-4 glow-yellow" />
+                  <h3 className="text-xl font-bold mb-3 text-gray-800">{value.title}</h3>
+                  <p className="text-gray-600 text-base">{value.description}</p>
                 </div>
               )
             })}
@@ -254,10 +250,10 @@ export default function AboutPage() {
       {/* Why Choose Us */}
       <section className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold mb-4 bg-gradient-to-r from-[#e3cda1] to-[#aa8b63] text-transparent bg-clip-text drop-shadow-[0_0_8px_rgba(160,135,102,0.7)]">
+          <h2 className="text-4xl font-extrabold mb-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-md animate-fade-in-up">
             Why Choose Us
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+          <p className="text-gray-700 text-lg max-w-xl mx-auto animate-fade-in-up delay-100">
             We combine culture, convenience, and care to offer a shopping experience you’ll always come back to.
           </p>
         </div>
@@ -266,10 +262,10 @@ export default function AboutPage() {
           {chooseUs.map((item, idx) => {
             const Icon = item.icon
             return (
-              <div key={idx} className="bg-card border rounded-lg p-8 text-center shadow hover:shadow-lg transition-shadow">
-                <Icon size={48} className="text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3 text-foreground">{item.title}</h3>
-                <p className="text-muted-foreground text-base">{item.description}</p>
+              <div key={idx} className="bg-white border rounded-xl p-8 text-center shadow-md hover:shadow-2xl transition-shadow duration-300 cursor-pointer animate-fade-in-up delay-[150ms]">
+                <Icon size={48} className="text-yellow-500 mx-auto mb-4 glow-yellow" />
+                <h3 className="text-xl font-bold mb-3 text-gray-800">{item.title}</h3>
+                <p className="text-gray-600 text-base">{item.description}</p>
               </div>
             )
           })}
@@ -278,23 +274,23 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="bg-muted border rounded-lg p-12 text-center">
-          <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#e3cda1] to-[#aa8b63] text-transparent bg-clip-text drop-shadow-[0_0_8px_rgba(160,135,102,0.7)]">
+        <div className="bg-gradient-to-r from-yellow-200 via-orange-100 to-yellow-50 border rounded-xl p-12 text-center shadow-xl hover:shadow-2xl transition-shadow duration-300 animate-fade-in-up">
+          <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-md">
             Visit Us Today
           </h2>
 
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-gray-700 text-lg mb-8 max-w-2xl mx-auto">
             Discover unique flavors, meet amazing people, and support a store built on culture, care, and community spirit.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button className="bg-primary hover:bg-primary/90 text-white sm:w-auto">
+            <Link href="/contact" className="cursor-pointer">
+              <Button className="bg-yellow-500 hover:bg-yellow-600 text-white sm:w-auto shadow-md hover:shadow-lg transition-all duration-300">
                 Contact Us
               </Button>
             </Link>
-            <Link href="/products">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 sm:w-auto">
+            <Link href="/products" className="cursor-pointer">
+              <Button variant="outline" className="border-yellow-500 text-yellow-500 hover:bg-yellow-100 sm:w-auto shadow-md hover:shadow-lg transition-all duration-300">
                 Shop Now
               </Button>
             </Link>

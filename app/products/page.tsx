@@ -199,42 +199,43 @@ export default function ProductsPage() {
   }, [selectedCategory, sortBy])
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-yellow-50 text-gray-900">
 
-      {/* ✅ HERO IMAGE */}
+      {/* HERO IMAGE */}
       <section className="relative w-full h-[340px] md:h-[420px] overflow-hidden">
-        <Image
-          src="/bakery-fresh-bread-display.jpg"
-          fill
-          alt="Market View"
-          className="object-cover brightness-90"
-        />
-        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white text-center px-6">
-          <h1 className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-[#a57b45] to-[#d9c59a] bg-clip-text text-transparent drop-shadow-lg">
+     <Image
+  src="/bakery-fresh-bread-display.jpg"
+  fill
+  alt="Market View"
+  className="object-cover brightness-90 blur-sm"
+/>
+
+        <div className="absolute inset-0 bg-yellow-100/50 flex flex-col justify-center items-center text-center px-6">
+          <h1 className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-yellow-700 to-yellow-500 bg-clip-text text-transparent drop-shadow-lg">
             Fresh & Quality Products
           </h1>
-          <p className="max-w-2xl text-white/90 text-lg">
+          <p className="max-w-2xl text-gray-900/90 text-lg">
             Explore our hand-picked selection of daily essentials, made with purity and quality at heart.
           </p>
         </div>
       </section>
 
       {/* FILTERS */}
-      <section className="bg-muted border-b border-border animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+      <section className="bg-yellow-50 border-b border-yellow-200 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
 
-            {/* ✅ CATEGORY FILTER */}
+            {/* CATEGORY FILTER */}
             <div className="flex flex-col gap-3 w-full lg:w-auto">
               <div className="flex items-center gap-2">
-                <Filter size={20} className="text-primary" />
-                <span className="font-semibold text-foreground">Categories</span>
+                <Filter size={20} className="text-yellow-700" />
+                <span className="font-semibold text-gray-900">Categories</span>
               </div>
               <div className="flex flex-wrap gap-2 animate-stagger">
                 <Button
                   variant={selectedCategory === null ? "default" : "outline"}
                   onClick={() => setSelectedCategory(null)}
-                  className={`${selectedCategory === null ? "bg-primary hover:bg-primary/90 text-white" : ""} transition-all duration-300 hover:scale-105`}
+                  className={`${selectedCategory === null ? "bg-yellow-600 hover:bg-yellow-700 text-white" : ""} transition-all duration-300 hover:scale-105`}
                 >
                   All Products
                 </Button>
@@ -243,7 +244,7 @@ export default function ProductsPage() {
                     key={cat}
                     variant={selectedCategory === cat ? "default" : "outline"}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`${selectedCategory === cat ? "bg-primary hover:bg-primary/90 text-white" : ""} transition-all duration-300 hover:scale-105`}
+                    className={`${selectedCategory === cat ? "bg-yellow-600 hover:bg-yellow-700 text-white" : ""} transition-all duration-300 hover:scale-105`}
                   >
                     {cat}
                   </Button>
@@ -253,11 +254,11 @@ export default function ProductsPage() {
 
             {/* SORTING */}
             <div className="flex flex-col gap-2 w-full lg:w-auto">
-              <label className="font-semibold text-foreground">Sort By:</label>
+              <label className="font-semibold text-gray-900">Sort By:</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as "name" | "price-low" | "price-high")}
-                className="px-4 py-2 border border-border rounded-md bg-card text-foreground hover:border-accent transition-colors"
+                className="px-4 py-2 border border-yellow-300 rounded-md bg-yellow-100 text-gray-900 hover:border-yellow-500 transition-colors"
               >
                 <option value="name">Name (A-Z)</option>
                 <option value="price-low">Price (Low to High)</option>
@@ -269,20 +270,20 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ✅ PRODUCTS GRID (unchanged) */}
+      {/* PRODUCTS GRID */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {filteredAndSorted.length === 0 ? (
           <div className="text-center py-12 animate-fade-in-up">
-            <p className="text-muted-foreground text-lg">No products found in this category.</p>
+            <p className="text-gray-700 text-lg">No products found in this category.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-stagger">
             {filteredAndSorted.map((product) => (
               <div
                 key={product.id}
-                className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-xl hover:border-accent transition-all duration-300 transform hover:-translate-y-2 group"
+                className="bg-yellow-100 border border-yellow-200 rounded-lg overflow-hidden hover:shadow-xl hover:border-yellow-400 transition-all duration-300 transform hover:-translate-y-2 group"
               >
-                <div className="relative h-48 overflow-hidden bg-muted">
+                <div className="relative h-48 overflow-hidden rounded-t-lg">
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
@@ -291,20 +292,21 @@ export default function ProductsPage() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="text-lg font-bold text-foreground group-hover:text-accent transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-yellow-700 transition-colors">
                     {product.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{product.category}</p>
-                  <p className="text-sm mt-3 text-foreground/80 leading-snug">
+                  <p className="text-sm text-gray-600">{product.category}</p>
+                  <p className="text-sm mt-3 text-gray-800/80 leading-snug">
                     {product.description}
                   </p>
+                  <p className="mt-2 font-semibold text-yellow-700">${product.price.toFixed(2)}</p>
                 </div>
               </div>
             ))}
           </div>
         )}
 
-        <div className="text-center mt-12 text-muted-foreground animate-fade-in-up">
+        <div className="text-center mt-12 text-gray-700 animate-fade-in-up">
           <p>
             Showing {filteredAndSorted.length} of {products.length} products
             {selectedCategory && ` in ${selectedCategory}`}
